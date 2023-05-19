@@ -10,7 +10,8 @@
 
 <body>
     {% if logged_in_user %}
-    <h3>Hello {{ logged_in_user }}</h3>
+    <h3 style="color:{{ session.get("color_picked") }};">Hello {{ logged_in_user }}</h3>
+    <a href="/logout">log out</a>
     {% endif %}
 
     <form action="/students/search">
@@ -18,8 +19,8 @@
         <input name="search_phone" value="{{ ser_p }}" placeholder="by phone">
         <input type="submit" value="Search">
     </form>
-    {% for student in students %}
 
+    {% for student in students %}
     <li>{{ student.name }} - {{ student.phone }} </li>
     {% endfor %}
 </body>
