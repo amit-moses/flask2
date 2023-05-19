@@ -9,8 +9,8 @@
 </head>
 
 <body>
-    {% if logged_in_user %}
-    <h3 style="color:{{ session.get("color_picked") }};">Hello {{ logged_in_user }}</h3>
+    {% if session.get("logged_in_user") %}
+    <h3 style="color:{{ session.get("color_picked") }};">Hello {{ session.get("logged_in_user") }}</h3>
     <a href="/logout">log out</a>
     {% endif %}
 

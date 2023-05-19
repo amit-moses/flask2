@@ -27,7 +27,7 @@ def students():
    if not session.get("logged_in_user"):
         return redirect("/")
     # check if logged in. if not redirect("/")
-   return render_template("students.html", students = STUDENTS, logged_in_user=session.get("logged_in_user"))
+   return render_template("students.html", students = STUDENTS)
 
 @app.route("/logout")
 def logout():
@@ -49,7 +49,7 @@ def search():
             return redirect("/students")
         filtered = filter(lambda st: search_n in st['name'].lower() and search_p in st["phone"].lower(), STUDENTS)
         # new_list = [student for student in STUDENTS if search in student]   
-        return render_template("students.html", students = filtered, logged_in_user=session.get("logged_in_user"), ser_n=search_n, ser_p=search_p)
+        return render_template("students.html", students = filtered, ser_n=search_n, ser_p=search_p)
 
 if __name__ == '__main__':
    app.run(debug=True, port=9000)
